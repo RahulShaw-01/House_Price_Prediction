@@ -1,29 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <title>Price Estimate</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-:root{--brand:#006cff;--bg:#eff2f7;--card:#ffffff;--shadow:0 10px 28px rgba(0,0,0,.09)}
-*{box-sizing:border-box;font-family:Inter,Arial,sans-serif;margin:0}
-body{min-height:100vh;background:var(--bg);display:flex;justify-content:center;align-items:center;padding:40px}
-.card{width:100%;max-width:540px;background:var(--card);border-radius:24px;padding:55px 60px;box-shadow:var(--shadow);text-align:center;animation:fade .5s ease}
-@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1}}
-h2{font-size:1.9rem;font-weight:700;margin-bottom:24px}
-.price{font-size:3.2rem;font-weight:700;color:var(--brand);margin-bottom:34px}
-.btn{display:inline-block;margin:6px 9px;padding:14px 32px;border-radius:10px;font-weight:600;font-size:.96rem;text-decoration:none;border:none;cursor:pointer;transition:.25s}
-.primary{color:#fff;background:var(--brand)}.primary:hover{background:#0456c2}
-.secondary{color:#555;background:#e2e6ef}.secondary:hover{background:#cfd3dc}
-@media(max-width:520px){.card{padding:40px 30px}}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+  :root {
+    --brand: #006cff;
+    --bg: #eff2f7;
+    --card: rgba(255, 255, 255, 0.9);
+    --shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px;
+  }
+  .card {
+    max-width: 540px;
+    width: 100%;
+    background: var(--card);
+    border-radius: 24px;
+    padding: 55px 50px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: #222;
+  }
+  .price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--brand);
+    margin-bottom: 40px;
+  }
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  a.btn {
+    padding: 14px 34px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    display: inline-block;
+  }
+  a.btn-primary {
+    background-color: var(--brand);
+    color: #fff;
+  }
+  a.btn-primary:hover {
+    background-color: #0052bf;
+  }
+  a.btn-secondary {
+    background-color: #ddd;
+    color: #333;
+  }
+  a.btn-secondary:hover {
+    background-color: #bbb;
+  }
+  @media (max-width: 520px) {
+    .card {
+      padding: 40px 30px;
+    }
+    .btn-group {
+      flex-direction: column;
+    }
+    a.btn {
+      width: 100%;
+      text-align: center;
+      padding: 16px 0;
+    }
+  }
 </style>
 </head>
 <body>
   <div class="card">
     <h2>Your Estimated Price</h2>
     <div class="price">{{ currency }} {{ final_result }}</div>
-    <a href="/predict" class="btn primary">Estimate Another</a>
-    <a href="/"        class="btn secondary">Home</a>
+    <div class="btn-group">
+      <a href="/predict" class="btn btn-primary">Estimate Another</a>
+      <a href="/" class="btn btn-secondary">Home</a>
+    </div>
   </div>
 </body>
 </html>
