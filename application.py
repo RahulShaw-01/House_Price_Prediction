@@ -1,14 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from src.pipelines.prediction_pipeline import CustomData, PredictPipeline
 import socket
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def home():
     return render_template("form.html")
-
 
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
@@ -27,8 +25,7 @@ def predict():
         HouseStyle   = request.form["HouseStyle"],
         ExterQual    = request.form["ExterQual"],
         KitchenQual  = request.form["KitchenQual"],
-)
-
+    )
 
     df = data.get_data_as_dataframe()
     pipeline = PredictPipeline()
@@ -38,8 +35,15 @@ def predict():
     USD_TO_INR = 83.3
     price_in_inr = round(prediction * USD_TO_INR, 2)
 
-
     return render_template("result.html", final_result=price_in_inr, currency='₹')
+
+@app.route("/health", methods=["GET"])
+def health_check():
+    return jsonify({"status": "healthy"}), 200
+
+@app.route("/script-health-check", methods=["GET"])
+def script_health_check():
+    return jsonify({"status": "healthy"}), 200
 
 def find_free_port():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -48,4 +52,5 @@ def find_free_port():
 
 if __name__ == "__main__":
     port = find_free_port()
+    print(f"Starting Flask app on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True, use_reloader=False)
