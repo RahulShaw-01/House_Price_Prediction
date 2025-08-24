@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>House-Price Estimator</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#006cff;--bg:#f5f7fb;--card:#ffffff;
+  --shadow:0 8px 26px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;font-family:Inter,Arial,sans-serif;margin:0}
+body{min-height:100vh;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:40px}
+.card{width:100%;max-width:620px;background:var(--card);border-radius:20px;padding:55px 60px;box-shadow:var(--shadow);text-align:center}
+h1{font-weight:600;font-size:2.1rem;margin-bottom:22px;letter-spacing:-.4px}
+p{font-size:1.05rem;line-height:1.55;color:#555}
+.btn{margin-top:38px;display:inline-block;padding:15px 38px;font-size:1rem;font-weight:600;color:#fff;background:var(--brand);border:none;border-radius:10px;cursor:pointer;transition:.25s}
+.btn:hover{background:#0456c2}
+@media(max-width:520px){
+ .card{padding:40px 32px}
+}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>🏠 House-Price Estimator</h1>
+    <p>Answer a few quick questions about a property and get an instant
+       market-price estimate from our machine-learning model.</p>
+    <button class="btn" onclick="location.href='/predict'">Get Started</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Property Details</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#006cff;--bg:#eef1f6;--card:#ffffff;
+  --shadow:0 6px 18px rgba(0,0,0,.07)
+}
+*{box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+body{margin:0;background:var(--bg);display:flex;justify-content:center;padding:45px 0}
+form{width:95%;max-width:1050px;background:var(--card);border-radius:22px;padding:45px 60px;box-shadow:var(--shadow)}
+h2{text-align:center;margin:0 0 35px;font-weight:600;letter-spacing:-.3px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px}
+label{display:block;margin-bottom:6px;font-weight:500;font-size:.92rem;color:#333}
+input,select{
+  width:100%;padding:12px 15px;border:1px solid #c8cdd6;border-radius:9px;
+  background:#fafbff;font-size:.93rem;transition:border-color .2s;
+}
+input:focus,select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 2px rgba(0,108,255,.12)}
+button{
+  margin-top:38px;width:100%;padding:16px 0;font-size:1rem;font-weight:600;
+  color:#fff;background:var(--brand);border:none;border-radius:10px;cursor:pointer;transition:.25s
+}
+button:hover{background:#0456c2}
+@media(max-width:560px){
+ form{padding:35px 26px}
+}
+</style>
+</head>
+<body>
+<form method="POST">
+  <h2>Enter Property Details</h2>
+
+  <div class="grid">
+    <div>
+      <label for="LotArea">Lot Area (sq ft)</label>
+      <input type="number" id="LotArea" name="LotArea" min="1000" step="1" required>
+    </div>
+
+    <div>
+      <label for="OverallQual">Overall Quality (1–10)</label>
+      <input type="number" id="OverallQual" name="OverallQual" min="1" max="10" required>
+    </div>
+
+    <div>
+      <label for="YearBuilt">Year Built</label>
+      <input type="number" id="YearBuilt" name="YearBuilt" min="1800" max="2025" required>
+    </div>
+
+    <div>
+      <label for="TotalBsmtSF">Basement Area (sq ft)</label>
+      <input type="number" id="TotalBsmtSF" name="TotalBsmtSF" min="0" step="1" required>
+    </div>
+
+    <div>
+      <label for="GrLivArea">Living Area (sq ft)</label>
+      <input type="number" id="GrLivArea" name="GrLivArea" min="300" step="1" required>
+    </div>
+
+    <div>
+      <label for="GarageCars">Garage Capacity (cars)</label>
+      <input type="number" id="GarageCars" name="GarageCars" min="0" max="5" required>
+    </div>
+
+    <div>
+      <label for="GarageArea">Garage Area (sq ft)</label>
+      <input type="number" id="GarageArea" name="GarageArea" min="0" step="1" required>
+    </div>
+
+    <div>
+      <label for="Neighborhood">Neighborhood</label>
+      <select id="Neighborhood" name="Neighborhood" required>
+        <option value="">Choose…</option>
+        <option value="CollgCr">College Creek</option>
+        <option value="OldTown">Old Town</option>
+        <option value="NridgHt">Northridge Hts</option>
+        <option value="NoRidge">Northridge</option>
+        <option value="Gilbert">Gilbert</option>
+        <!-- add more as desired -->
+      </select>
+    </div>
+
+    <div>
+      <label for="HouseStyle">House Style</label>
+      <select id="HouseStyle" name="HouseStyle" required>
+        <option value="">Choose…</option>
+        <option value="1Story">1-Story</option>
+        <option value="2Story">2-Story</option>
+        <option value="SFoyer">Split Foyer</option>
+        <option value="SLvl">Split Level</option>
+        <option value="1.5Fin">1.5-Story Fin</option>
+        <option value="2.5Fin">2.5-Story Fin</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="ExterQual">Exterior Quality</label>
+      <select id="ExterQual" name="ExterQual" required>
+        <option value="">Choose…</option>
+        <option value="Ex">Excellent</option>
+        <option value="Gd">Good</option>
+        <option value="TA">Average</option>
+        <option value="Fa">Fair</option>
+        <option value="Po">Poor</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="KitchenQual">Kitchen Quality</label>
+      <select id="KitchenQual" name="KitchenQual" required>
+        <option value="">Choose…</option>
+        <option value="Ex">Excellent</option>
+        <option value="Gd">Good</option>
+        <option value="TA">Average</option>
+        <option value="Fa">Fair</option>
+        <option value="Po">Poor</option>
+      </select>
+    </div>
+  </div>
+
+  <button type="submit">Predict House Price</button>
+</form>
+</body>
+</html>
